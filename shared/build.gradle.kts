@@ -5,7 +5,6 @@ plugins {
     kotlin("native.cocoapods")
     id("kotlinx-serialization")
     id("com.android.library")
-//    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 version = "1.0"
@@ -40,7 +39,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:") {
+                    version {
+                        strictly(Versions.kotlinCoroutines)
+                    }
+                }
 
                 implementation(Network.retrofit2)
                 implementation(Network.converterGson)
@@ -58,25 +61,18 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting {}
+        val androidMain by getting
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {}
-        val iosTest by getting {}
+        val iosMain by getting
+        val iosTest by getting
+        val jvmMain by getting
     }
 }
-
-//multiplatformSwiftPackage {
-//    swiftToolsVersion("5.3")
-//    targetPlatforms {
-//        iOS { v("14") }
-////        macOS { v("") }
-//    }
-//}
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
