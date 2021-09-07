@@ -5,10 +5,10 @@ Pod::Spec.new do |spec|
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Some description for the Shared Module'
+    spec.summary                  = 'Premier League'
 
     spec.static_framework         = true
-    spec.vendored_frameworks      = "build/cocoapods/framework/shared.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/PremierLeagueKit.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
