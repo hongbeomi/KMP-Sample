@@ -8,11 +8,11 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'Premier League'
 
     spec.static_framework         = true
-    spec.vendored_frameworks      = "build/cocoapods/framework/PremierLeagueKit.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/shared.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
-    spec.ios.deployment_target = '14.1'
+                
 
                 
 

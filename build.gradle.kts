@@ -17,6 +17,8 @@ allprojects {
         google()
         mavenCentral()
         maven(url = "https://kotlin.bintray.com/kotlinx/")
+        maven(url = "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers")
+        maven(url = "https://jitpack.io")
     }
 }
 

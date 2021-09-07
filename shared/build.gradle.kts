@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
-//    kotlin("jvm")
     id("kotlinx-serialization")
     id("com.android.library")
+//    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 version = "1.0"
@@ -20,21 +20,21 @@ android {
 }
 
 kotlin {
-    android()
 
     val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
         System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
         else -> ::iosX64
     }
-
     iosTarget("ios") {}
+
+//    macosX64("macOS")
+    android()
+    jvm()
 
     cocoapods {
         summary = "Premier League"
         homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        frameworkName = "PremierLeagueKit"
-        podfile = project.file("../iosApp/Podfile")
+        frameworkName = "shared"
     }
 
     sourceSets {
@@ -44,10 +44,10 @@ kotlin {
 
                 implementation(Network.retrofit2)
                 implementation(Network.converterGson)
-                implementation(Network.okhttpBom)
-                implementation(Network.okhttp)
-                implementation(Network.okhttpUrlConnection)
-                implementation(Network.loggingInterceptor)
+//                implementation(Network.okhttpBom)
+//                implementation(Network.okhttp)
+//                implementation(Network.okhttpUrlConnection)
+//                implementation(Network.loggingInterceptor)
 
                 implementation(Serialization.core)
             }
@@ -58,26 +58,25 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-            }
-        }
+        val androidMain by getting {}
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {
-            dependencies {
-            }
-        }
-        val iosTest by getting {
-            dependencies {
-            }
-        }
+        val iosMain by getting {}
+        val iosTest by getting {}
     }
 }
+
+//multiplatformSwiftPackage {
+//    swiftToolsVersion("5.3")
+//    targetPlatforms {
+//        iOS { v("14") }
+////        macOS { v("") }
+//    }
+//}
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
