@@ -8,6 +8,9 @@ pluginManagement {
 }
 
 rootProject.name = "KMM-PremierLeague"
-include(":androidApp")
-include(":shared")
-include(":desktopApp")
+include(
+":androidApp",
+":shared",
+":desktopApp",
+"webApp"
+)

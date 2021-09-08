@@ -24,11 +24,11 @@ kotlin {
         System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
         else -> ::iosX64
     }
-    iosTarget("ios") {}
 
-//    macosX64("macOS")
+    iosTarget("ios") {}
     android()
     jvm()
+    js()
 
     cocoapods {
         summary = "Premier League"
@@ -71,6 +71,7 @@ kotlin {
         val iosMain by getting
         val iosTest by getting
         val jvmMain by getting
+        val jsMain by getting
     }
 }
 
