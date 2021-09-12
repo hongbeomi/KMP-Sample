@@ -36,11 +36,12 @@ android {
 }
 
 dependencies {
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
+    implementation(Compose.activity)
     implementation(Compose.ui)
     implementation(Compose.uiGraphics)
     implementation(Compose.uiTooling)

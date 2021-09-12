@@ -2,18 +2,35 @@ package github.hongbeomi.kmm_premierleague.data.repository
 
 import github.hongbeomi.kmm_premierleague.data.service.PremierLeagueApiService
 import github.hongbeomi.kmm_premierleague.domain.entity.Player
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PremierLeagueRepositoryImpl(
     private val service: PremierLeagueApiService
 ): PremierLeagueRepository {
 
-    override suspend fun fetchPlayerList(): List<Player> {
+    private val mainScope: CoroutineScope = MainScope()
+
+    private val _playerList = MutableStateFlow<List<Player>>(emptyList())
+    val playerList = _playerList.asStateFlow()
+
+    init {
+        mainScope.launch {
+            fetchPlayers()
+        }
+    }
+
+    private suspend fun fetchPlayers() {
         val staticInfo = service.fetchBootstrapStaticInfo()
 
         val elements = staticInfo.elements
         val teams = staticInfo.teams
 
-        return elements.map {
+        _playerList.value = elements.map {
             Player(
                 id = it.id,
                 name = "${it.firstName} ${it.secondName}",
@@ -29,6 +46,14 @@ class PremierLeagueRepositoryImpl(
                 cleanSheet = it.cleanSheets,
                 squadNumber = it.squadNumber
             )
+        }
+    }
+
+    override fun getPlayers(success: (List<Player>) -> Unit) {
+        mainScope.launch {
+            playerList.collect {
+                success(it.sortedByDescending { it.points })
+            }
         }
     }
 
