@@ -12,5 +12,5 @@ include(
 ":androidApp",
 ":shared",
 ":desktopApp",
-"webApp"
+":webApp"
 )

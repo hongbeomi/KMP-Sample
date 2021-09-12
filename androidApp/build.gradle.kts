@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
-//    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -51,12 +49,7 @@ dependencies {
     implementation(Compose.material)
     implementation(Compose.coilCompose)
 
-    kapt(Hilt.hiltCompiler)
-    implementation(Hilt.hilt)
+    implementation(Koin.android)
 
     implementation(project(":shared"))
-}
-
-kapt {
-    correctErrorTypes = true
 }
