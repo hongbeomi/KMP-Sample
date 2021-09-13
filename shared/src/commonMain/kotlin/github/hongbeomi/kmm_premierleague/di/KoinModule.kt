@@ -1,4 +1,4 @@
-package github.hongbeomi.kmm_premierleague.android.di
+package github.hongbeomi.kmm_premierleague.di
 
 import github.hongbeomi.kmm_premierleague.data.repository.PremierLeagueRepository
 import github.hongbeomi.kmm_premierleague.data.repository.PremierLeagueRepositoryImpl

@@ -9,8 +9,9 @@ pluginManagement {
 
 rootProject.name = "KMM-PremierLeague"
 include(
-":androidApp",
-":shared",
-":desktopApp",
-":webApp"
+    ":androidApp",
+    ":shared",
+    ":desktopApp",
+    ":webApp",
+    ":composable"
 )
