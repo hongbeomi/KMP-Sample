@@ -1,18 +1,21 @@
 package github.hongbeomi.kmm_premierleague.android.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.compose.runtime.Composable
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.activity.compose.setContent
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import github.hongbeomi.kmm_premierleague.android.ui.widget.MainScreen
+import github.hongbeomi.kmm_premierleague.android.ui.widget.PlayerGridList
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<MainViewModel>()
 
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,12 +26,11 @@ class MainActivity : AppCompatActivity() {
 
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun MainLayout(viewModel: MainViewModel) {
     val players = remember { viewModel.playerList }.collectAsState()
-    Scaffold {
-        players.value.forEach {
-            Text(text = it.toString())
-        }
+    MainScreen {
+        PlayerGridList(players = players.value)
     }
 }

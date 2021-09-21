@@ -33,8 +33,11 @@ class PremierLeagueRepositoryImpl(
         _playerList.value = elements.map {
             Player(
                 id = it.id,
+                firstName = it.firstName,
+                secondName = it.secondName,
                 name = "${it.firstName} ${it.secondName}",
                 team = teams.find { t -> t.code == it.teamCode }?.name ?: "",
+                teamUrl = "https://resources.premierleague.com/premierleague/badges/t${it.teamCode}.png",
                 photoUrl = "https://resources.premierleague.com/premierleague/photos/players/110x140/p${it.code}.png",
                 points = it.totalPoints,
                 currentPrice = it.nowCost / 10.0,
@@ -44,7 +47,7 @@ class PremierLeagueRepositoryImpl(
                 redCards = it.redCards,
                 saves = it.saves,
                 cleanSheet = it.cleanSheets,
-                squadNumber = it.squadNumber
+                nowCost = it.nowCost
             )
         }
     }
