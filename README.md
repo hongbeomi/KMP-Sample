@@ -10,7 +10,7 @@ Kotlin Multiplatform Sample
 
 ## 💎 Structure Diagram
 
-![]()
+![structure](https://github.com/hongbeomi/KMP-Sample/blob/master/image/structure.png)
 
 <br/>
 
@@ -24,7 +24,7 @@ Kotlin Multiplatform Sample
 
 ## 🚀 ScreenShot
 
-![image](https://github.com/hongbeomi/KMP-Sample/blob/master/image.png)
+![image](https://github.com/hongbeomi/KMP-Sample/blob/master/image/screenshot.png)
 
 <br/>
 
