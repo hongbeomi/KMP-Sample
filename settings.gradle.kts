@@ -7,11 +7,11 @@ pluginManagement {
     }
 }
 
-rootProject.name = "KMM-PremierLeague"
+rootProject.name = "KMP-Sample"
+
 include(
     ":androidApp",
-    ":shared",
     ":desktopApp",
     ":webApp",
-    ":composable"
+    ":shared",
 )

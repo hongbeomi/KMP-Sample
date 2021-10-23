@@ -1,2 +1,2 @@
-# KMM-Sample
-Kotlin Multiplatform Mobile Sample 
+# KMP-Sample
+Kotlin Multiplatform Sample

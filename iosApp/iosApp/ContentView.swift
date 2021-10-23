@@ -2,10 +2,11 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greeting()
+
+	let repository = KMMRepository()
 
 	var body: some View {
-		Text(greet)
+		Text(self.repository.getText())
 	}
 }
 

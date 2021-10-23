@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdk = AndroidSdk.compile
     defaultConfig {
-        applicationId = "github.hongbeomi.kmm_premierleague.android"
+        applicationId = "github.hongbeomi.kmp_sample.android"
         minSdk = AndroidSdk.min
         targetSdk = AndroidSdk.target
         versionCode = 1
@@ -19,10 +19,7 @@ android {
     }
 
     buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        dataBinding = true
     }
 
     compileOptions {
@@ -41,17 +38,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02")
-    implementation(Compose.activity)
-    implementation(Compose.ui)
-    implementation(Compose.uiGraphics)
-    implementation(Compose.uiTooling)
-    implementation(Compose.foundation)
-    implementation(Compose.foundationLayout)
-    implementation(Compose.material)
-    implementation(Compose.coilCompose)
-
     implementation(Koin.android)
-
     implementation(project(":shared"))
 }

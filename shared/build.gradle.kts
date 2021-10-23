@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
-    id("kotlinx-serialization")
     id("com.android.library")
 }
 
@@ -28,10 +27,13 @@ kotlin {
     iosTarget("ios") {}
     android()
     jvm()
-    js()
+    js(IR) {
+        useCommonJs()
+        browser()
+    }
 
     cocoapods {
-        summary = "Premier League"
+        summary = "Kmp Sample"
         homepage = "Link to the Shared Module homepage"
         frameworkName = "shared"
     }
@@ -39,18 +41,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:") {
-                    version {
-                        strictly(Versions.kotlinCoroutines)
-                    }
-                }
-                implementation(Ktor.clientCore)
-                implementation(Ktor.clientJson)
-                implementation(Ktor.clientLogging)
-                implementation(Ktor.clientSerialization)
-
                 api(Koin.core)
-                implementation(Serialization.core)
             }
         }
         val commonTest by getting {
@@ -59,22 +50,14 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation(Ktor.clientAndroid)
-            }
-        }
+        val androidMain by getting
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {
-            dependencies {
-                implementation(Ktor.clientIos)
-            }
-        }
+        val iosMain by getting
         val iosTest by getting
         val jvmMain by getting
         val jsMain by getting
