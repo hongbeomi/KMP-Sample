@@ -6,7 +6,6 @@
 
     <application
         android:name="github.hongbeomi.kmp_sample.android.KMMApplication"
-        android:usesCleartextTraffic="true"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
