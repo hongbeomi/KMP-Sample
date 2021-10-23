@@ -18,7 +18,7 @@ Kotlin Multiplatform Sample
 
 ## 🚀 ScreenShot
 
-![]()
+![image](https://github.com/hongbeomi/KMP-Sample/blob/master/image.png)
 
 <br/>
 
