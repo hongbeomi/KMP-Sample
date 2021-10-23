@@ -8,6 +8,12 @@ Kotlin Multiplatform Sample
 
 <br/>
 
+## 💎 Structure Diagram
+
+![]()
+
+<br/>
+
 ## 🛠 Build
 
 - At least android Arctic Fox version should be used and at least Java 11 should be used
